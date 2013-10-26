@@ -33,6 +33,12 @@
 			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.testinfected.hamcrest-matchers</groupId>
+			<artifactId>all-matchers</artifactId>
+			<version>1.6</version>
+			<type>pom</type>
+		</dependency>
 	</dependencies>
 
 	<profiles>

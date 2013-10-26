@@ -22,9 +22,17 @@ public class ParallelTest
 {
 
 	private Parallel action;
+
+
 	private float longestDuration;
+
+
 	private float timeStep;
+
+
 	private MockupAction[] actions;
+
+
 	private int actionsToExecute;
 
 
@@ -35,7 +43,7 @@ public class ParallelTest
 	public void setUp() throws Exception
 	{
 		action = new Parallel();
-		
+
 		longestDuration = 5;
 		timeStep = 0.5f;
 		actionsToExecute = 0;
@@ -45,13 +53,13 @@ public class ParallelTest
 			new MockupAction(longestDuration - 1),
 			new MockupAction(longestDuration - 2)
 		};
-		
+
 		for (MockupAction mockAction : actions)
 		{
 			action.add((Action) mockAction);
-			actionsToExecute ++;
+			actionsToExecute++;
 		}
-		
+
 		action.restart();
 	}
 
@@ -63,8 +71,8 @@ public class ParallelTest
 	public void tearDown() throws Exception
 	{
 	}
-	
-	
+
+
 	/**
 	 * Test method for {@link pl.xesenix.timeline.actions.Parallel#reset()}.
 	 */
@@ -126,8 +134,8 @@ public class ParallelTest
 			if (this.time < 0)
 			{
 				this.finished = true;
-				
-				actionsToExecute --;
+
+				actionsToExecute--;
 
 				return true;
 			}

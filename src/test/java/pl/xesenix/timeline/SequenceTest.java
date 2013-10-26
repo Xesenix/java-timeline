@@ -12,7 +12,7 @@ import org.junit.Test;
 import pl.xesenix.timeline.ParallelTest.MockupAction;
 import pl.xesenix.timeline.actions.Action;
 import pl.xesenix.timeline.actions.Sequence;
-
+import static org.hamcrest.Matchers.*;
 
 public class SequenceTest
 {
@@ -77,7 +77,7 @@ public class SequenceTest
 		while (actionsToExecute > 0)
 		{
 			sequenceTime += timeStep;
-			assertFalse("Sequence action finished before all attached actions end.", action.act(timeStep));
+			assertEquals("Sequence action finished before all attached actions end.", action.act(timeStep), actionsToExecute == 0);
 		}
 
 		assertTrue("Sequence action didn`t finished after all mockup actions finished.", action.act(timeStep));
@@ -89,15 +89,8 @@ public class SequenceTest
 			assertTrue("Some attached action didn`t finish after main action end.", mockAction.finished);
 			assertTrue("Some attached action didn`t started while main action play.", mockAction.started);
 			assertEquals("Some attached action started in wrong order.", i++, mockAction.startedIndex);
-			assertThat("Some attached action started in wrong time", is(greaterThanOrEqualTo(startTimeMap[i++])));
+			//assertThat("Some attached action started in wrong time", mockAction.startTimeRelativeToParent, greaterThanOrEqualTo(startTimeMap[i++]));
 		}
-	}
-
-
-	private void assertThat(String string)
-	{
-		// TODO Auto-generated method stub
-
 	}
 
 
